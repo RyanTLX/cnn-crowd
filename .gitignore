@@ -1,3 +1,7 @@
+# My ignores
+.DS_Store
+crowd_dataset/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
