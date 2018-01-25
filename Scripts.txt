@@ -1,0 +1,15 @@
+CREATING DATASETS
+python CreateDataset.py --image_height=32 \
+&& python CreateDataset.py --image_height=64 \
+&& python CreateDataset.py --image_height=128
+
+TRAINING
+python CrowdEstimator.py -t --image_height=32 --lr=0.005 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=32 --lr=0.001 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=32 --lr=0.01 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=64 --lr=0.005 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=64 --lr=0.001 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=64 --lr=0.01 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=128 --lr=0.005 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=128 --lr=0.001 --fs=5 \
+&& python CrowdEstimator.py -t --image_height=128 --lr=0.01 --fs=5
