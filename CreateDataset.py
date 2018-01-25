@@ -6,8 +6,8 @@ from random import shuffle
 from tqdm import tqdm
 
 
-TRAIN_DIR = 'crowd_dataset/camall/train'
-TEST_DIR = 'crowd_dataset/camall/test_grouped'
+TRAIN_DIR = 'Dataset/camall/train'
+TEST_DIR = 'Dataset/camall/test_grouped'
 IMAGE_HEIGHT = 32 # 32px height as default.
 
 
@@ -42,7 +42,9 @@ def create_training_dataset(to_height):
             training_data.append([np.array(img_data), create_label(img)])
 
     shuffle(training_data)
-    np.save(str(to_height) + '_training_data.npy', training_data)
+    file_name = str(to_height) + '_training_data.npy'
+    save_path = os.path.join('Dataset', file_name)
+    np.save(save_path, training_data)
 
 
 def create_testing_dataset(to_height):
@@ -64,7 +66,9 @@ def create_testing_dataset(to_height):
             testing_data.append([np.array(img_data), img_num])
 
     shuffle(testing_data)
-    np.save(str(to_height) + '_testing_data.npy', testing_data)
+    file_name = str(to_height) + '_testing_data.npy'
+    save_path = os.path.join('Dataset', file_name)
+    np.save(save_path, testing_data)
 
 
 if __name__ == '__main__':
