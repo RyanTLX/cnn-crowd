@@ -1,6 +1,6 @@
 # My ignores
 .DS_Store
-crowd_dataset/
+Dataset/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
