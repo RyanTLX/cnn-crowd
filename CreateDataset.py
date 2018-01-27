@@ -6,9 +6,10 @@ from random import shuffle
 from tqdm import tqdm
 
 
-TRAIN_DIR = 'Dataset/camall/train'
-TEST_DIR = 'Dataset/camall/test_grouped'
-IMAGE_HEIGHT = 32 # 32px height as default.
+TRAIN_DIR = 'Dataset/train/camall'
+VAL_DIR = 'Dataset/validate/camall'
+TEST_DIR = 'Dataset/test/camall'
+IMAGE_HEIGHT = int()
 
 
 def create_label(image_name):
@@ -24,9 +25,18 @@ def create_label(image_name):
         return np.array([0,0,0,1])
 
 
-def create_training_dataset(to_height):
-    training_data = []
-    for dirpath, dirnames, filenames in os.walk(TRAIN_DIR):
+def create_training_dataset(to_height, set_type):
+    data = []
+
+    path = str()
+    if set_type == 'train':
+        path = TRAIN_DIR
+    elif set_type == 'validate':
+        path = VAL_DIR
+    elif set_type == 'test':
+        path = TEST_DIR
+
+    for dirpath, dirnames, filenames in os.walk(path):
         # Exclude hidden from list.
         files = [f for f in filenames if not f.startswith('.')]
 
@@ -39,36 +49,14 @@ def create_training_dataset(to_height):
             img_data = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
             new_width = to_height * int(img_data.shape[1] / img_data.shape[0])
             img_data = cv2.resize(img_data, (to_height, new_width))
-            training_data.append([np.array(img_data), create_label(img)])
+            data.append([np.array(img_data), create_label(img)])
 
-    shuffle(training_data)
-    file_name = str(to_height) + '_training_data.npy'
+    shuffle(data)
+    file_name = str(to_height) + '_' + set_type + '_all_data.npy'
     save_path = os.path.join('Dataset', file_name)
-    np.save(save_path, training_data)
+    np.save(save_path, data)
 
-
-def create_testing_dataset(to_height):
-    testing_data = []
-    for dirpath, dirnames, filenames in os.walk(TEST_DIR):
-        # Exclude hidden from list.
-        files = [f for f in filenames if not f.startswith('.')]
-
-        # Skip current loop of files is empty.
-        if not files:
-            continue
-
-        for img in tqdm(files):
-            path = os.path.join(dirpath,img)
-            img_num = img.split('.')[0]
-            img_data = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
-            new_width = to_height * int(img_data.shape[1] / img_data.shape[0])
-            img_data = cv2.resize(img_data, (to_height, new_width))
-            testing_data.append([np.array(img_data), img_num])
-
-    shuffle(testing_data)
-    file_name = str(to_height) + '_testing_data.npy'
-    save_path = os.path.join('Dataset', file_name)
-    np.save(save_path, testing_data)
+    return save_path
 
 
 if __name__ == '__main__':
@@ -79,5 +67,11 @@ if __name__ == '__main__':
     if args.image_height:
         IMAGE_HEIGHT = args.image_height
 
-    create_training_dataset(IMAGE_HEIGHT)
-    create_testing_dataset(IMAGE_HEIGHT)
+    print('Creating train dataset: ')
+    print('Train data set saved at: ' + create_training_dataset(IMAGE_HEIGHT, 'train'))
+
+    print('Creating validate dataset: ')
+    print('validate data set saved at: ' + create_training_dataset(IMAGE_HEIGHT, 'validate'))
+
+    print('Creating test dataset: ')
+    print('Test data set saved at: ' + create_training_dataset(IMAGE_HEIGHT, 'test'))
