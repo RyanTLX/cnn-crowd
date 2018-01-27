@@ -64,8 +64,8 @@ def create_dataset(to_height, set_type):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image_height", help="height of image", type=int, required=True)
-    parser.add_argument("--cam", help="which camera set to train", type=str, required=True)
+    parser.add_argument('--image_height', help='height of image', type=int, required=True)
+    parser.add_argument('--cam', help='which camera set to train', type=str, required=True)
     args = parser.parse_args()
 
     if args.image_height:
