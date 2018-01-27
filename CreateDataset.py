@@ -25,7 +25,7 @@ def create_label(image_name):
         return np.array([0,0,0,1])
 
 
-def create_training_dataset(to_height, set_type):
+def create_dataset(to_height, set_type):
     data = []
 
     path = str()
@@ -68,10 +68,10 @@ if __name__ == '__main__':
         IMAGE_HEIGHT = args.image_height
 
     print('Creating train dataset: ')
-    print('Train data set saved at: ' + create_training_dataset(IMAGE_HEIGHT, 'train'))
+    print('Train data set saved at: ' + create_dataset(IMAGE_HEIGHT, 'train'))
 
     print('Creating validate dataset: ')
-    print('validate data set saved at: ' + create_training_dataset(IMAGE_HEIGHT, 'validate'))
+    print('validate data set saved at: ' + create_dataset(IMAGE_HEIGHT, 'validate'))
 
     print('Creating test dataset: ')
-    print('Test data set saved at: ' + create_training_dataset(IMAGE_HEIGHT, 'test'))
+    print('Test data set saved at: ' + create_dataset(IMAGE_HEIGHT, 'test'))
