@@ -13,3 +13,9 @@ python CrowdEstimator.py -t --image_height=32 --lr=0.005 --fs=5 \
 && python CrowdEstimator.py -t --image_height=128 --lr=0.005 --fs=5 \
 && python CrowdEstimator.py -t --image_height=128 --lr=0.001 --fs=5 \
 && python CrowdEstimator.py -t --image_height=128 --lr=0.01 --fs=5
+
+PREDICT
+python CrowdEstimator.py -p --lr=0.001 --epoch=10 --cam=cam1 \
+&& python CrowdEstimator.py -p --lr=0.001 --epoch=10 --cam=cam2 \
+&& python CrowdEstimator.py -p --lr=0.001 --epoch=10 --cam=cam3 \
+&& python CrowdEstimator.py -p --lr=0.001 --epoch=10 --cam=camall
