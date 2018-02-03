@@ -10,26 +10,23 @@ import os
 from datetime import datetime, timedelta
 from tqdm import tqdm
 
+# Hide TensorFlow deprecated errors.
 tf.logging.set_verbosity(tf.logging.ERROR)
 
+# Default arguments.
 IMAGE_HEIGHT = 64
-LR = float()
-EPOCH = int()
+LR = 0.001
+EPOCH = 10
+CAM = 'camall'
 
+# Arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('-t', help='run as training mode', action='store_true')
-parser.add_argument('-p', help='run as predicting mode', action='store_true')
-parser.add_argument('--lr', help='learning rate', type=float, required=True)
-parser.add_argument('--epoch', help='number of epoch', type=int, required=True)
-parser.add_argument('--cam', help='camera set', type=str, required=True)
+parser.add_argument('--lr', help='learning rate', type=float)
+parser.add_argument('--epoch', help='number of epoch', type=int)
+parser.add_argument('--cam', help='camera set', type=str)
 args = parser.parse_args()
 
-if args.t and args.p:
-    print('-t and -p cannot be run together.')
-    exit()
-if not args.t and not args.p:
-    print('Must state either -t or -p to run in train or predict mode.')
-    exit()
 if args.lr:
     LR = args.lr
 if args.epoch:
@@ -37,6 +34,7 @@ if args.epoch:
 if args.cam:
     CAM = args.cam
 
+# Load datasets.
 training_data_path = os.path.join('Dataset', '64_{}_train_dataset.npy'.format(CAM))
 validate_data_path = os.path.join('Dataset', '64_{}_validate_dataset.npy'.format(CAM))
 testing_data_path = os.path.join('Dataset', '64_{}_test_dataset.npy'.format(CAM))
@@ -73,7 +71,7 @@ y_test = [i[1] for i in test_data]
 filename_test = [i[2] for i in test_data]
 labels = ['empty', 'low', 'medium', 'high']
 
-# Network
+# Convolutional Neural Network
 tf.reset_default_graph()
 
 convnet = input_data(shape=[None, int(IMAGE_HEIGHT), int(image_width), 1], name='input')
@@ -87,8 +85,10 @@ convnet = dropout(convnet, 0.5)
 convnet = fully_connected(convnet, 4, activation='softmax') # Because 4 categories
 convnet = regression(convnet, optimizer='adam', learning_rate=LR, loss='categorical_crossentropy', name='targets')
 
+# Package network into a model.
 model = tflearn.DNN(convnet)
 
+# Initialise model name.
 model_name = str(IMAGE_HEIGHT) + '_' + str(LR) + '_' + CAM + '_crowd_model'
 model_path = os.path.join('Model', model_name)
 
@@ -97,6 +97,7 @@ if args.t:
     starttime = datetime.now()
     print('\'{}\' started training at {}'.format(model_name, starttime))
 
+    # Train model.
     model.fit(
         {'input': X_train}, {'targets': y_train},
         n_epoch=EPOCH,
@@ -109,18 +110,19 @@ if args.t:
     print('\'{}\' finished training at {}'.format(model_name, endtime))
     print('Training \'{}\' took {} seconds to complete.'.format(model_name, (endtime-starttime).seconds))
 
-elif args.p:
+else:
     confusion_matrix_prediction = {'empty':0, 'low':0, 'medium':0, 'high':0}
     confusion_matrix_truth = {'empty':confusion_matrix_prediction.copy(),
                               'low':confusion_matrix_prediction.copy(),
                               'medium':confusion_matrix_prediction.copy(),
                               'high':confusion_matrix_prediction.copy()}
 
+    # Load saved model.
     model.load(model_path)
 
     accuracy = float()
 
-    iteration = 0
+    # Iterate test dataset and do prediction for each image.
     for x in tqdm(range(len(X_test)), total=len(X_test), unit='predictions'):
         results = np.round(model.predict([X_test[x]]), decimals=3)
         results = np.squeeze(results)
@@ -136,12 +138,12 @@ elif args.p:
         prediction = labels[top_k[0]]
         confusion_matrix_truth[truth][prediction] += 1
 
-
         if prediction == truth:
             accuracy += 1
 
     accuracy = (accuracy / len(X_test)) * 100
 
+    # Print confusion matrix.
     print('Empty \t\t', 'Empty:', confusion_matrix_truth['empty']['empty'], '\t',
                         'Low:', confusion_matrix_truth['empty']['low'], '\t',
                         'Medium:', confusion_matrix_truth['empty']['medium'], '\t',
