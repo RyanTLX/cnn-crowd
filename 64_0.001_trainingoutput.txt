@@ -1,0 +1,172 @@
+'64_0.001_cam1_crowd_model' started training at 2018-01-27 22:26:44.696995
+---------------------------------
+Run id: 64_0.001_cam1_crowd_model
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 10936
+Validation samples: 1213
+--
+Training Step: 171  | total loss: 0.36529 | time: 21.118s
+| Adam | epoch: 001 | loss: 0.36529 - acc: 0.8438 | val_loss: 0.19892 - val_acc: 0.9398 -- iter: 10936/10936
+--
+Training Step: 342  | total loss: 0.20026 | time: 20.301s
+| Adam | epoch: 002 | loss: 0.20026 - acc: 0.9358 | val_loss: 0.02023 - val_acc: 1.0000 -- iter: 10936/10936
+--
+Training Step: 513  | total loss: 0.14335 | time: 22.036s
+| Adam | epoch: 003 | loss: 0.14335 - acc: 0.9588 | val_loss: 0.01062 - val_acc: 0.9992 -- iter: 10936/10936
+--
+Training Step: 684  | total loss: 0.13357 | time: 21.549s
+| Adam | epoch: 004 | loss: 0.13357 - acc: 0.9755 | val_loss: 0.00465 - val_acc: 1.0000 -- iter: 10936/10936
+--
+Training Step: 855  | total loss: 0.09302 | time: 21.485s
+| Adam | epoch: 005 | loss: 0.09302 - acc: 0.9838 | val_loss: 0.00039 - val_acc: 1.0000 -- iter: 10936/10936
+--
+Training Step: 1026  | total loss: 0.10587 | time: 22.594s
+| Adam | epoch: 006 | loss: 0.10587 - acc: 0.9879 | val_loss: 0.00175 - val_acc: 1.0000 -- iter: 10936/10936
+--
+Training Step: 1197  | total loss: 0.13683 | time: 20.947s
+| Adam | epoch: 007 | loss: 0.13683 - acc: 0.9891 | val_loss: 0.00032 - val_acc: 1.0000 -- iter: 10936/10936
+--
+Training Step: 1368  | total loss: 0.14284 | time: 21.682s
+| Adam | epoch: 008 | loss: 0.14284 - acc: 0.9903 | val_loss: 0.00002 - val_acc: 1.0000 -- iter: 10936/10936
+--
+Training Step: 1539  | total loss: 0.15171 | time: 21.544s
+| Adam | epoch: 009 | loss: 0.15171 - acc: 0.9825 | val_loss: 0.00021 - val_acc: 1.0000 -- iter: 10936/10936
+--
+Training Step: 1710  | total loss: 0.15126 | time: 22.954s
+| Adam | epoch: 010 | loss: 0.15126 - acc: 0.9856 | val_loss: 0.00003 - val_acc: 1.0000 -- iter: 10936/10936
+--
+
+
+
+'64_0.001_cam1_crowd_model' finished training at 2018-01-27 22:30:24.399341
+Training '64_0.001_cam1_crowd_model' took 219 seconds to complete.
+WARNING:tensorflow:From /Users/Ryan/anaconda3/lib/python3.5/site-packages/tflearn/initializations.py:119: UniformUnitScaling.__init__ (from tensorflow.python.ops.init_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.initializers.variance_scaling instead with distribution=uniform to get equivalent behavior.
+'64_0.001_cam2_crowd_model' started training at 2018-01-27 22:30:34.224528
+---------------------------------
+Run id: 64_0.001_cam2_crowd_model
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 10612
+Validation samples: 1176
+--
+Training Step: 166  | total loss: 0.29513 | time: 20.984s
+| Adam | epoch: 001 | loss: 0.29513 - acc: 0.9003 | val_loss: 0.16920 - val_acc: 0.9566 -- iter: 10612/10612
+--
+Training Step: 332  | total loss: 0.12197 | time: 19.943s
+| Adam | epoch: 002 | loss: 0.12197 - acc: 0.9700 | val_loss: 0.44765 - val_acc: 0.9073 -- iter: 10612/10612
+--
+Training Step: 498  | total loss: 0.13182 | time: 21.754s
+| Adam | epoch: 003 | loss: 0.13182 - acc: 0.9728 | val_loss: 0.06990 - val_acc: 0.9770 -- iter: 10612/10612
+--
+Training Step: 664  | total loss: 0.11319 | time: 20.546s
+| Adam | epoch: 004 | loss: 0.11319 - acc: 0.9878 | val_loss: 0.07594 - val_acc: 0.9830 -- iter: 10612/10612
+--
+Training Step: 830  | total loss: 0.34323 | time: 20.706s
+| Adam | epoch: 005 | loss: 0.34323 - acc: 0.9471 | val_loss: 0.14928 - val_acc: 0.9702 -- iter: 10612/10612
+--
+Training Step: 996  | total loss: 0.11393 | time: 19.409s
+| Adam | epoch: 006 | loss: 0.11393 - acc: 0.9904 | val_loss: 0.11816 - val_acc: 0.9736 -- iter: 10612/10612
+--
+Training Step: 1162  | total loss: 0.12548 | time: 18.225s
+| Adam | epoch: 007 | loss: 0.12548 - acc: 0.9883 | val_loss: 0.11199 - val_acc: 0.9762 -- iter: 10612/10612
+--
+Training Step: 1328  | total loss: 0.12410 | time: 18.965s
+| Adam | epoch: 008 | loss: 0.12410 - acc: 0.9860 | val_loss: 0.10397 - val_acc: 0.9906 -- iter: 10612/10612
+--
+Training Step: 1494  | total loss: 0.12451 | time: 18.813s
+| Adam | epoch: 009 | loss: 0.12451 - acc: 0.9852 | val_loss: 1.68135 - val_acc: 0.6973 -- iter: 10612/10612
+--
+Training Step: 1660  | total loss: 0.20774 | time: 19.497s
+| Adam | epoch: 010 | loss: 0.20774 - acc: 0.9571 | val_loss: 0.11430 - val_acc: 0.9838 -- iter: 10612/10612
+--
+'64_0.001_cam2_crowd_model' finished training at 2018-01-27 22:33:56.696026
+Training '64_0.001_cam2_crowd_model' took 202 seconds to complete.
+WARNING:tensorflow:From /Users/Ryan/anaconda3/lib/python3.5/site-packages/tflearn/initializations.py:119: UniformUnitScaling.__init__ (from tensorflow.python.ops.init_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.initializers.variance_scaling instead with distribution=uniform to get equivalent behavior.
+'64_0.001_cam3_crowd_model' started training at 2018-01-27 22:34:06.889927
+---------------------------------
+Run id: 64_0.001_cam3_crowd_model
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 10741
+Validation samples: 1192
+--
+Training Step: 168  | total loss: 0.33612 | time: 20.160s
+| Adam | epoch: 001 | loss: 0.33612 - acc: 0.8449 | val_loss: 0.92021 - val_acc: 0.8012 -- iter: 10741/10741
+--
+Training Step: 336  | total loss: 0.14502 | time: 21.718s
+| Adam | epoch: 002 | loss: 0.14502 - acc: 0.9454 | val_loss: 0.42609 - val_acc: 0.9002 -- iter: 10741/10741
+--
+Training Step: 504  | total loss: 0.14385 | time: 21.475s
+| Adam | epoch: 003 | loss: 0.14385 - acc: 0.9623 | val_loss: 0.58304 - val_acc: 0.9018 -- iter: 10741/10741
+--
+Training Step: 672  | total loss: 0.13046 | time: 20.208s
+| Adam | epoch: 004 | loss: 0.13046 - acc: 0.9739 | val_loss: 1.28122 - val_acc: 0.8733 -- iter: 10741/10741
+--
+Training Step: 840  | total loss: 0.15340 | time: 19.970s
+| Adam | epoch: 005 | loss: 0.15340 - acc: 0.9636 | val_loss: 1.28134 - val_acc: 0.8909 -- iter: 10741/10741
+--
+Training Step: 1008  | total loss: 0.16124 | time: 20.330s
+| Adam | epoch: 006 | loss: 0.16124 - acc: 0.9678 | val_loss: 0.80118 - val_acc: 0.9128 -- iter: 10741/10741
+--
+Training Step: 1176  | total loss: 0.14294 | time: 20.822s
+| Adam | epoch: 007 | loss: 0.14294 - acc: 0.9752 | val_loss: 0.55401 - val_acc: 0.9144 -- iter: 10741/10741
+--
+Training Step: 1344  | total loss: 0.13568 | time: 20.828s
+| Adam | epoch: 008 | loss: 0.13568 - acc: 0.9899 | val_loss: 1.81609 - val_acc: 0.8876 -- iter: 10741/10741
+--
+Training Step: 1512  | total loss: 0.16662 | time: 21.147s
+| Adam | epoch: 009 | loss: 0.16662 - acc: 0.9775 | val_loss: 1.12605 - val_acc: 0.9044 -- iter: 10741/10741
+--
+Training Step: 1680  | total loss: 0.03968 | time: 20.609s
+| Adam | epoch: 010 | loss: 0.03968 - acc: 0.9892 | val_loss: 0.69818 - val_acc: 0.9203 -- iter: 10741/10741
+--
+'64_0.001_cam3_crowd_model' finished training at 2018-01-27 22:37:37.617071
+Training '64_0.001_cam3_crowd_model' took 210 seconds to complete.
+WARNING:tensorflow:From /Users/Ryan/anaconda3/lib/python3.5/site-packages/tflearn/initializations.py:119: UniformUnitScaling.__init__ (from tensorflow.python.ops.init_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.initializers.variance_scaling instead with distribution=uniform to get equivalent behavior.
+'64_0.001_camall_crowd_model' started training at 2018-01-27 22:37:46.683964
+---------------------------------
+Run id: 64_0.001_camall_crowd_model
+Log directory: /tmp/tflearn_logs/
+---------------------------------
+Training samples: 32289
+Validation samples: 3581
+--
+Training Step: 505  | total loss: 0.19522 | time: 61.279s
+| Adam | epoch: 001 | loss: 0.19522 - acc: 0.9370 | val_loss: 0.07979 - val_acc: 0.9749 -- iter: 32289/32289
+--
+Training Step: 1010  | total loss: 0.14503 | time: 57.483s
+| Adam | epoch: 002 | loss: 0.14503 - acc: 0.9689 | val_loss: 0.22033 - val_acc: 0.9497 -- iter: 32289/32289
+--
+Training Step: 1515  | total loss: 0.13964 | time: 58.241s
+| Adam | epoch: 003 | loss: 0.13964 - acc: 0.9688 | val_loss: 0.14101 - val_acc: 0.9659 -- iter: 32289/32289
+--
+Training Step: 2020  | total loss: 0.13352 | time: 59.057s
+| Adam | epoch: 004 | loss: 0.13352 - acc: 0.9800 | val_loss: 0.05435 - val_acc: 0.9855 -- iter: 32289/32289
+--
+Training Step: 2525  | total loss: 0.03382 | time: 58.725s
+| Adam | epoch: 005 | loss: 0.03382 - acc: 0.9886 | val_loss: 0.01829 - val_acc: 0.9933 -- iter: 32289/32289
+--
+Training Step: 3030  | total loss: 0.12426 | time: 58.484s
+| Adam | epoch: 006 | loss: 0.12426 - acc: 0.9841 | val_loss: 0.12769 - val_acc: 0.9760 -- iter: 32289/32289
+--
+Training Step: 3535  | total loss: 0.11989 | time: 58.011s
+| Adam | epoch: 007 | loss: 0.11989 - acc: 0.9915 | val_loss: 0.10799 - val_acc: 0.9785 -- iter: 32289/32289
+--
+Training Step: 4040  | total loss: 0.14195 | time: 62.756s
+| Adam | epoch: 008 | loss: 0.14195 - acc: 0.9865 | val_loss: 0.50161 - val_acc: 0.9567 -- iter: 32289/32289
+--
+Training Step: 4545  | total loss: 0.17905 | time: 64.333s
+| Adam | epoch: 009 | loss: 0.17905 - acc: 0.9812 | val_loss: 0.02999 - val_acc: 0.9930 -- iter: 32289/32289
+--
+Training Step: 5050  | total loss: 0.19047 | time: 59.807s
+| Adam | epoch: 010 | loss: 0.19047 - acc: 0.9822 | val_loss: 0.04522 - val_acc: 0.9933 -- iter: 32289/32289
+--
+'64_0.001_camall_crowd_model' finished training at 2018-01-27 22:47:48.455222
+Training '64_0.001_camall_crowd_model' took 601 seconds to complete.

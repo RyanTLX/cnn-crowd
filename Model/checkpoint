@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/Ryan/Google Drive/cnn-crowd/Model/64_0.001_camall_crowd_model"
+all_model_checkpoint_paths: "/Users/Ryan/Google Drive/cnn-crowd/Model/64_0.001_camall_crowd_model"
