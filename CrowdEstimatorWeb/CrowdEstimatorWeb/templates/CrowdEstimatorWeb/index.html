@@ -1,0 +1,45 @@
+{% extends "CrowdEstimatorWeb/template.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="text-center">
+        <h1>Tampines</h1>
+        <h3 id="liveClock"></h3>
+    </div>
+
+    <script>
+        function startTime()
+        {
+            var today = new Date();
+            // var h = today.getHours();
+            // var m = today.getMinutes();
+            // var s = today.getSeconds();
+            // m = checkTime(m);
+            // s = checkTime(s);
+            document.getElementById('liveClock').innerHTML = today.toLocaleTimeString();
+            // h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+        // function checkTime(i)
+        // {
+        //     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        //     return i;
+        // }
+
+        startTime()
+    </script>
+
+    <div class="row">
+        {% for result in params %}
+            <div class="col-md-2 bg-{{ result.color }}">
+                <h5>{{ cabinCount }}</h5>
+                <img src="/static/CrowdEstimatorWeb/CrowdImages/{{ result.image_name }}" class="img-responsive" />
+                <h5 class="text-uppercase text-center">{{ result.label }}</h5>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
