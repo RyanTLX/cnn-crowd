@@ -5,4 +5,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^reload_data', views.reload_data, name='reload_data'),
 ]
