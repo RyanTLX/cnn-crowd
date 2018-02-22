@@ -3,82 +3,16 @@
 {% block content %}
 
 <div class="container-fluid">
-
+    <!-- Header -->
     <div class="text-center">
         <h1>Tampines</h1>
         <h3 id="liveClock"></h3>
     </div>
 
-    <script>
-        // Live clock.
-        function startTime()
-        {
-            var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            // add a zero in front of numbers<10
-            m = checkTime(m);
-            s = checkTime(s);
-            document.getElementById("liveClock").innerHTML = h + ":" + m + ":" + s;
-            var t = setTimeout(function(){ startTime() }, 500);
-        }
+    <br>
 
-        function checkTime(i)
-        {
-            if (i < 10)
-            {
-                i = "0" + i;
-            }
-            return i;
-        }
-
-        // Start live clock.
-        startTime()
-
-        // Refresh content.
-        function reload_data()
-        {
-            $.ajax({
-                url: "{% url 'reload_data' %}",
-                data: {},
-                success: function(data)
-                {
-                    for (var i=0; i<data.params.length; i++)
-                    {
-                        var mainRowNode = document.getElementById("cabin" + (i+1));
-                        var imgNode = document.getElementById("img" + (i+1));
-                        var labelNode = document.getElementById("label" + (i+1));
-
-                        var cabin_image_name = data.params[i].cabin_image_name;
-                        var cabin_label = data.params[i].cabin_label;
-                        var cabin_color = data.params[i].cabin_color;
-
-                        mainRowNode.className = 'col-md-2 bg-' + cabin_color;
-                        imgNode.src = '/static/CrowdEstimatorWeb/CrowdImages/' + cabin_image_name;
-                        labelNode.innerHTML = cabin_label;
-                    }
-                }
-            })
-        };
-
-        reload_data() // First call.
-
-        // Then call again every 3 seconds.
-        window.setInterval(function(){
-            reload_data()
-        }, 2000);
-    </script>
-
+    <!-- Cabins -->
     <div class="row" id="mainRow">
-        <!-- {% for result in params %}
-            <div class="col-md-2 bg-{{ result.color }}">
-                <h5>{{ cabinCount }}</h5>
-                <img src="/static/CrowdEstimatorWeb/CrowdImages/{{ result.image_name }}" class="img-responsive" />
-                <h5 class="text-uppercase text-center">{{ result.label }}</h5>
-            </div>
-        {% endfor %} -->
-
         <div id="cabin1"><br><img class='img-responsive' id='img1'/><h5 class="text-uppercase text-center" id='label1'></h5></div>
         <div id="cabin2"><br><img class='img-responsive' id='img2'/><h5 class="text-uppercase text-center" id='label2'></h5></div>
         <div id="cabin3"><br><img class='img-responsive' id='img3'/><h5 class="text-uppercase text-center" id='label3'></h5></div>
@@ -86,6 +20,95 @@
         <div id="cabin5"><br><img class='img-responsive' id='img5'/><h5 class="text-uppercase text-center" id='label5'></h5></div>
         <div id="cabin6"><br><img class='img-responsive' id='img6'/><h5 class="text-uppercase text-center" id='label6'></h5></div>
     </div>
+
+    <br>
+
+    <!-- Footer -->
+    <div class="text-center">
+        <h6 >Speed slider (for demo purposes only)</h6>
+        <h6 id="speedLabel"></6>
+    </div>
+    <div class="slidecontainer col-md-2 col-md-offset-5">
+        <input type="range" min="100" max="4000" value="2000" step="100" class="slider" id="myRange">
+    </div>
+
 </div>
+
+<script>
+    // Live clock.
+    function startTime()
+    {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById("liveClock").innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(function(){ startTime() }, 500);
+    }
+
+    function checkTime(i)
+    {
+        if (i < 10)
+        {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    // Start live clock.
+    startTime()
+
+    // Refresh content.
+    function reload_data()
+    {
+        $.ajax({
+            url: "{% url 'reload_data' %}",
+            data: {},
+            success: function(data)
+            {
+                for (var i=0; i<data.params.length; i++)
+                {
+                    var mainRowNode = document.getElementById("cabin" + (i+1));
+                    var imgNode = document.getElementById("img" + (i+1));
+                    var labelNode = document.getElementById("label" + (i+1));
+
+                    var cabin_image_name = data.params[i].cabin_image_name;
+                    var cabin_label = data.params[i].cabin_label;
+                    var cabin_color = data.params[i].cabin_color;
+
+                    mainRowNode.className = 'col-md-2 bg-' + cabin_color;
+                    imgNode.src = '/static/CrowdEstimatorWeb/CrowdImages/' + cabin_image_name;
+                    labelNode.innerHTML = cabin_label;
+                }
+            }
+        })
+    };
+
+    // Slider
+    var slider = document.getElementById("myRange");
+    var speedLabel = document.getElementById("speedLabel");
+    speedLabel.innerHTML = slider.value + "ms"; // Display the default slider value
+
+    reload_data() // First call.
+
+    var interval = slider.value;
+    // Then call again every 3 seconds.
+    var myInterval = window.setInterval(function(){
+                        reload_data()
+                    }, interval);
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+        interval = this.value;
+        speedLabel.innerHTML = interval + "ms";
+        clearInterval(myInterval)
+        myInterval = window.setInterval(function(){
+                            reload_data()
+                        }, interval);
+    }
+</script>
 
 {% endblock %}
