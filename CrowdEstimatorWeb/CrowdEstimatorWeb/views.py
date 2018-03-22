@@ -101,11 +101,11 @@ def predict_batch():
         pred_image_name = image_names[i]
 
         i += 1
-        color = "success"
+        color = "#D5E8D4"
         if prediction == "medium":
-            color = "warning"
+            color = "#FFF2CC"
         elif prediction == "high":
-            color = "danger"
+            color = "#F8CECC"
         predictions.append({'cabin_image_name': pred_image_name, 'cabin_label': prediction, 'cabin_color': color})
     return predictions
 

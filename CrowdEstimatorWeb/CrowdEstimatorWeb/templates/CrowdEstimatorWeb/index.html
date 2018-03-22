@@ -79,7 +79,8 @@
                     var cabin_label = data.params[i].cabin_label;
                     var cabin_color = data.params[i].cabin_color;
 
-                    mainRowNode.className = 'col-md-2 bg-' + cabin_color;
+                    mainRowNode.className = 'col-md-2';
+                    mainRowNode.style.backgroundColor = cabin_color;
                     imgNode.src = '/static/CrowdEstimatorWeb/CrowdImages/' + cabin_image_name;
                     labelNode.innerHTML = cabin_label;
                 }
