@@ -5,7 +5,8 @@
 <div class="container-fluid">
     <!-- Header -->
     <div class="text-center">
-        <h1>Tampines</h1>
+        <h1>Video Analytics for Crowd Estimation in Train and Passenger Boarding</h1>
+        <h3>Demo Application</h3>
         <h3 id="liveClock"></h3>
     </div>
 
@@ -25,8 +26,8 @@
 
     <!-- Footer -->
     <div class="text-center">
-        <h6 >Speed slider (for demo purposes only)</h6>
-        <h6 id="speedLabel"></6>
+        <h5>Speed slider (for demo purposes only)</h5>
+        <h5 id="speedLabel"></5>
     </div>
     <div class="slidecontainer col-md-2 col-md-offset-5">
         <input type="range" min="100" max="4000" value="2000" step="100" class="slider" id="myRange">
@@ -38,14 +39,26 @@
     // Live clock.
     function startTime()
     {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        // add a zero in front of numbers<10
-        m = checkTime(m);
-        s = checkTime(s);
-        document.getElementById("liveClock").innerHTML = h + ":" + m + ":" + s;
+        // var today = new Date();
+        // var h = today.getHours();
+        // var m = today.getMinutes();
+        // var s = today.getSeconds();
+        // // add a zero in front of numbers<10
+        // m = checkTime(m);
+        // s = checkTime(s);
+        // document.getElementById("liveClock").innerHTML = h + ":" + m + ":" + s;
+        // var t = setTimeout(function(){ startTime() }, 500);
+
+
+        var date = new Date();
+        var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+        var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+        hours = hours < 10 ? "0" + hours : hours;
+        var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        time = hours + ":" + minutes + ":" + seconds + " " + am_pm;
+        var lblTime = document.getElementById("liveClock");
+        lblTime.innerHTML = time;
         var t = setTimeout(function(){ startTime() }, 500);
     }
 
